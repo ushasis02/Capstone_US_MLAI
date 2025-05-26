@@ -1,8 +1,12 @@
 #from cgitb import text
 from flask import Flask,render_template,request
+from flask import send_from_directory
 import os
 import model 
 app = Flask(__name__)
+@app.route('/favicon.ico')
+def favicon():
+    return send_from_directory(os.path.join(app.root_path, 'static'),'favicon.ico', mimetype ='image/favicon.pmg')
 
 valid_userid = ['00sab00','1234','zippy','zburt5','joshua','dorothy w','rebecca','walker557','samantha','raeanne','kimmie','cassie','moore222']
 @app.route('/')
